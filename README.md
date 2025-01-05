@@ -24,7 +24,7 @@ While this script Works For Me and does attempt to be smart about updates (no ch
 It still has notable limitations:
 * It has been tested only superficially.
 * It does not support un-binding.
-* It binds "everything" (ie: any matching command that the source can issue and the receiver will acknowledge will be found).
+* It binds "everything" (ie: any matching command that the source can issue and the receiver will acknowledge will be bound).
   * There is no support for binding only a subset.
 * Use at your own risk, yadda yadda.
 
