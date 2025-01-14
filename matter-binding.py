@@ -31,6 +31,8 @@ def raise_on_error(response):
         raise ValueError(f"Error {response['error_code']}: {response.get('details')}")
 
 def normalize_dict(d):
+    print(f"Type of d in normalize_dict: {type(d)}")
+    print(f"Value of d: {d}")
     return {k: v for k, v in d.items() if v is not None}
 
 def match_dict(entry, ref_dict):
@@ -112,7 +114,6 @@ def update_receiver_acl(ws, fabric_id, sender, receiver):
     raise_on_error(new_acl_data)
     print("ACL updated")
 
-import pdb
 def create_binding(ws, fabric_id, sender, receiver):
     print("Creating binding...")
     # pdb.set_trace()
@@ -128,6 +129,8 @@ def create_binding(ws, fabric_id, sender, receiver):
 
     read_response = ws.recv()
     bindings_data = json.loads(read_response)
+    print(f"bindings_data type: {type(bindings_data)}")
+    print(f"bindings_data: {json.dumps(bindings_data, indent=2)}")
     raise_on_error(bindings_data)
     binding_entries = bindings_data.get("result", {}).get(f"{sender['endpoint']}/30/0", [])
     # print(f"Existing Bindings value: {json.dumps(binding_entries, indent=2)}")
@@ -140,6 +143,8 @@ def create_binding(ws, fabric_id, sender, receiver):
     }
 
     # Check if the new binding already exists
+    print(f"binding_entries type: {type(binding_entries)}")
+    print(f"binding_entries: {binding_entries}")
     if any(normalize_dict(new_binding) == normalize_dict(binding) for binding in binding_entries):
         print("Binding already exists, no update needed")
         return
