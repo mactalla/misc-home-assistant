@@ -121,7 +121,7 @@ def create_binding(ws, fabric_id, sender, receiver):
         "command": "read_attribute",
         "args": {
             "node_id": sender["node"],
-            "attribute_path": f"{sender["endpoint"]}/30/0"
+            "attribute_path": f"{sender['endpoint']}/30/0"
         }
     }
     ws.send(json.dumps(read_bindings))
