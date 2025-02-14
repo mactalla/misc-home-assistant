@@ -145,11 +145,11 @@ def create_binding(ws, fabric_id, sender, receiver):
     # Check if the new binding already exists
     print(f"binding_entries type: {type(binding_entries)}")
     print(f"binding_entries: {binding_entries}")
-    if any(normalize_dict(new_binding) == normalize_dict(binding) for binding in binding_entries):
-        print("Binding already exists, no update needed")
-        return
+    # if any(normalize_dict(new_binding) == normalize_dict(binding) for binding in binding_entries):
+    #     print("Binding already exists, no update needed")
+    #     return
     
-    binding_entries.append(new_binding)
+    binding_entries = [ new_binding ]
 
     create_binding = {
         "message_id": next_message_id(),
